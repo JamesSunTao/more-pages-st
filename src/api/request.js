@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 import { toLowerCaseObjKey } from './lowercase'
-import store from '../store/index'
 
 $.ajaxSetup({
   success(res) {
@@ -10,10 +9,11 @@ $.ajaxSetup({
     if (res && ([401, 'kicked'].indexOf(res.code) > -1 || (res.type === 'sso' && !res.success))) {
     //  window.InitData.loginshow = true; 
       // location.href = location.origin;
-      window.InitData.message = res.message;    
-      store.commit("setOffLine",true);
+      debugger
+      // window.InitData.message = res.message;    
+      // store.commit("setOffLine",true);
     }else{
-      store.commit("setOffLine",false);
+      // store.commit("setOffLine",false);
     }
   }
 });
@@ -31,7 +31,7 @@ export const request = (url, type, data) => {
   if (isObject(url)) {
     param = url;
   } else {
-    param.url = applicationPath + url;
+    param.url = '/read/' + url;
   }
   param.type = type;
   param.dataType = 'json';

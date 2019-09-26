@@ -4,7 +4,6 @@ import { get, post, dealResult, dealResultForBool } from './request'
 export default {
     // 获取题录信息
     GetPdfInfo(data) {
-        debugger
         return post('File/GetPdfTiluInfo', data).then(dealResult);
     },
     // 获取页面列表
